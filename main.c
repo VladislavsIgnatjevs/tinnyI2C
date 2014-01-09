@@ -1,9 +1,10 @@
 #include <avr/io.h>
 #include <util/delay.h>
+#define delay 1
 
-#define I2C_DDR DDRD
-#define I2C_PIN PIND
-#define I2C_PORT PORTD
+#define I2C_DDR DDRB
+#define I2C_PIN PINB
+#define I2C_PORT PORTB
 
 // Pins to be used in the bit banging
 #define I2C_CLK 0
@@ -35,7 +36,8 @@ void I2C_WriteBit(unsigned char c)
     }
 
     I2C_CLOCK_HI();
-    delay(1);
+    while ((I2C_PIN & (1 << I2C_CLK)) == 0);
+    _delay_us(delay);
 
     I2C_CLOCK_LO();
     delay(1);
@@ -67,7 +69,7 @@ unsigned char I2C_ReadBit()
 //
 void I2C_Init()
 {
-    I2C_PORT &= ~ ((1 << I2C_DAT) | (1 << I2C_CLK));
+    I2C_PORT |=  ((1 << I2C_DAT) | (1 << I2C_CLK));
 
     I2C_CLOCK_HI();
     I2C_DATA_HI();

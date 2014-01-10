@@ -7,6 +7,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
+
 #define device_address 0x70
 
 #define delay 1

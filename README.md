@@ -1,6 +1,6 @@
 Development in progress
 
-Controlling CPU cooler based on temperature data.
+Controlling CPU cooler based on temperature data.<br>
 HW:<br>
 Attiny45<br>
 Ericcson a1018s LCD display (i2c)<br>

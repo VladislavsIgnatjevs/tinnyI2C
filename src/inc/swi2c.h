@@ -9,6 +9,8 @@
 
 
 #define device_address 0x70
+#define eeprom_address_W 160
+#define eeprom_address_R 161
 
 #define delay 1
 
